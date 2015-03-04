@@ -1,40 +1,14 @@
-import csv
+import csv, json
 
-file = '../resources/oscar_tweets.csv'
+def openResource(s):
+    return open('../resources/' + s)
 
-headers = {
-    "time": "Time",
-    "id": " ID",
-    "text": " Text",
-    "retweets": " Retweets",
-    "geotag": " GeoTag",
-    "placetag": " PlaceTag",
-    "favorites": " Favorites",
-    "name": " User Name",
-    "loc": " User Location",
-    "userid": " User ID",
-    "timezone": " Time Zone",
-    "followers": " User Followers",
-    "statuses": " User Statuses",
-    "friends": " User Friends",
-    "handle": " User Handle",
-    "hashtags": " HashTags in Tweet",
-    "mentions": " UserMentions in Tweet"
-}
+file = openResource('oscar_tweets.csv')
+headers = json.load(openResource('headers.json'))
+best_picture = [line.rstrip('\n') for line in openResource('best_pictures.txt').readlines()]
 
-best_picture = [
-    "American Sniper",
-    "Birdman",
-    "Boyhood",
-    "The Grand Budapest Hotel",
-    "The Imitation Game",
-    "Selma",
-    "The Theory of Everything",
-    "Whiplash"
-]
-
-with open(file) as f:
+with file as f:
     reader = csv.DictReader(f)
     i = 0
-    for row in reader:
+    #for row in reader:
         # logic here

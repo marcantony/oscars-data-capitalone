@@ -1,0 +1,19 @@
+{
+    "time": "Time",
+    "id": " ID",
+    "text": " Text",
+    "retweets": " Retweets",
+    "geotag": " GeoTag",
+    "placetag": " PlaceTag",
+    "favorites": " Favorites",
+    "name": " User Name",
+    "loc": " User Location",
+    "userid": " User ID",
+    "timezone": " Time Zone",
+    "followers": " User Followers",
+    "statuses": " User Statuses",
+    "friends": " User Friends",
+    "handle": " User Handle",
+    "hashtags": " HashTags in Tweet",
+    "mentions": " UserMentions in Tweet"
+}

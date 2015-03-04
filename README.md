@@ -1,6 +1,8 @@
 # oscars-data-capitalone
 Code that analyzes data from the 2015 Oscars.
 
+Place oscar_tweets.csv in the "resources" folder.
+
 ## Prompt
 Using the dataset found here (https://s3.amazonaws.com/mindsumo/public/oscar_tweets.csv+(1).zip) and the programming language of your choice, submit the following:
 

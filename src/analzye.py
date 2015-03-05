@@ -1,7 +1,7 @@
 import csv
 import json
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from collections import defaultdict
 
 def openResource(s):
@@ -33,6 +33,9 @@ with csvfile as f:
 
     popularityRank = sorted(nomineeCount, key=nomineeCount.get, reverse=True)
     birdmanAnnounceTime = max(timeCount, key=timeCount.get)
+
+    # naively convert to PST
+    birdmanAnnounceTime += timedelta(hours=-8)
    
-    print birdmanAnnounceTime.strftime('%H:%M %p')
+    print birdmanAnnounceTime.strftime('%I:%M %p')
     print popularityRank

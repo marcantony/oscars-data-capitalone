@@ -1,6 +1,7 @@
 import csv
 import json
 
+from datetime import datetime
 from collections import defaultdict
 
 def openResource(s):
@@ -13,6 +14,7 @@ best_pictures = [line.rstrip('\n') for line in openResource('best_pictures.txt')
 with csvfile as f:
     reader = csv.DictReader(f)
     nomineeCount = defaultdict(int)
+    timeCount = defaultdict(int)
     popularityRank = list()
     for row in reader:
 
@@ -23,6 +25,14 @@ with csvfile as f:
             if t in text or t.replace(' ', '') in text:
                 nomineeCount[title] += 1
 
+                # record hour and minute if title is 'Birdman'
+                if title == 'Birdman':
+                    mention_time = datetime.strptime(row[headers['time']],
+                        '%a %b %d %H:%M:%S +0000 %Y').replace(second=0)
+                    timeCount[mention_time] += 1
+
     popularityRank = sorted(nomineeCount, key=nomineeCount.get, reverse=True)
-    print nomineeCount
+    birdmanAnnounceTime = max(timeCount, key=timeCount.get)
+   
+    print birdmanAnnounceTime.strftime('%H:%M %p')
     print popularityRank

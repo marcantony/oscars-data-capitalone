@@ -8,7 +8,7 @@ def openResource(s):
     return open('../resources/' + s)
 
 def openOutput(s):
-    return open('../out/' + s)
+    return open('../out/' + s, 'w')
 
 bestPicture = 'Birdman'
 
@@ -17,7 +17,7 @@ best_pictures = [line.rstrip('\n') for line in openResource('best_pictures.txt')
 headers = json.load(openResource('headers.json'))
 states = json.load(openResource('states.json'))
 
-popularityFile = openOutput('pop.txt')
+popularityFile = openOutput('pop.json')
 timeFile = openOutput('time.txt')
 stateFile = openOutput('states.json')
 
@@ -59,7 +59,24 @@ stateRank = sorted(stateCount, key=stateCount.get, reverse=True)
 birdmanAnnounceTime += timedelta(hours=-8)
 
 # print output to console
-print popularityRank
-print "Birdman was mentioned most often at", birdmanAnnounceTime.strftime('%I:%M %p')
-print json.dumps(stateCount)
-print stateRank
+print 'The best picture nominees in order of popularity were:'
+for idx, title in enumerate(popularityRank):
+    print idx + 1, ':', title
+print ''
+
+print 'Birdman was mentioned most often at', birdmanAnnounceTime.strftime('%I:%M %p')
+print ''
+
+print 'The states in order of Oscars tweet activity were:'
+for idx, state in enumerate(stateRank):
+    print idx + 1, ':', states[state][1]
+
+# print output to files for web app
+try:
+    json.dump(popularityRank, popularityFile)
+    timeFile.write(birdmanAnnounceTime.isoformat(' '))
+    json.dump(stateCount, stateFile)
+finally:
+    popularityFile.close()
+    timeFile.close()
+    stateFile.close()

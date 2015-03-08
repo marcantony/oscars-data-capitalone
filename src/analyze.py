@@ -7,18 +7,26 @@ from collections import defaultdict
 def openResource(s):
     return open('../resources/' + s)
 
+def openOutput(s):
+    return open('../out/' + s)
+
+bestPicture = 'Birdman'
+
 csvfile = openResource('oscar_tweets.csv')
-headers = json.load(openResource('headers.json'))
 best_pictures = [line.rstrip('\n') for line in openResource('best_pictures.txt').readlines()]
+headers = json.load(openResource('headers.json'))
 states = json.load(openResource('states.json'))
+
+popularityFile = openOutput('pop.txt')
+timeFile = openOutput('time.txt')
+stateFile = openOutput('states.json')
+
+nomineeCount = defaultdict(int)
+timeCount = defaultdict(int)
+stateCount = defaultdict(int)
 
 with csvfile as f:
     reader = csv.DictReader(f)
-    nomineeCount = defaultdict(int)
-    timeCount = defaultdict(int)
-    stateCount = defaultdict(int)
-    popularityRank = list()
-    stateRank = list()
     for row in reader:
 
         # find mentions of Best Picture nominees
@@ -29,7 +37,7 @@ with csvfile as f:
                 nomineeCount[title] += 1
 
                 # record hour and minute if title is 'Birdman'
-                if title == 'Birdman':
+                if title == bestPicture:
                     mention_time = datetime.strptime(row[headers['time']],
                         '%a %b %d %H:%M:%S +0000 %Y').replace(second=0)
                     timeCount[mention_time] += 1
@@ -43,14 +51,15 @@ with csvfile as f:
             except UnicodeDecodeError:
                 continue
 
-    popularityRank = sorted(nomineeCount, key=nomineeCount.get, reverse=True)
-    birdmanAnnounceTime = max(timeCount, key=timeCount.get)
-    stateRank = sorted(stateCount, key=stateCount.get, reverse=True)
+popularityRank = sorted(nomineeCount, key=nomineeCount.get, reverse=True)
+birdmanAnnounceTime = max(timeCount, key=timeCount.get)
+stateRank = sorted(stateCount, key=stateCount.get, reverse=True)
 
-    # naively convert to PST
-    birdmanAnnounceTime += timedelta(hours=-8)
-   
-    print birdmanAnnounceTime.strftime('%I:%M %p')
-    print popularityRank
-    print json.dumps(stateCount)
-    print stateRank
+# naively convert to PST
+birdmanAnnounceTime += timedelta(hours=-8)
+
+# print output to console
+print popularityRank
+print "Birdman was mentioned most often at", birdmanAnnounceTime.strftime('%I:%M %p')
+print json.dumps(stateCount)
+print stateRank

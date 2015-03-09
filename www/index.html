@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="oscars">
+<head>
+    <title>CapitalOne Oscars 2015 Data Analysis</title>
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="index.css" rel="stylesheet"></link>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>CapitalOne Data Analysis <small>Oscars 2015 Tweet Data</small></h1>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="text-center">Best Picture Nominees Ranked by Mention</h3>
+                <div oscars-pop-list></div>
+            </div>
+            <div class="col-md-6">
+                <h3 class="text-center">Tweet Activity by State</h3>
+                <div oscars-states-pie></div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <h3>Time <i>Birdman</i> was Mentioned Most</h3>
+                <div oscars-birdman-time></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/lib/Flot/jquery.js"></script>
+    <script src="/lib/angular/angular.js"></script>
+    
+    <script src="/lib/Flot/jquery.flot.js"></script>
+    <script src="/lib/Flot/jquery.flot.pie.js"></script>
+    <script src="/lib/Flot/jquery.flot.resize.js"></script>
+    <script src="/lib/flot.tooltip/js/jquery.flot.tooltip.js"></script>
+
+    <script src="oscars.js"></script>
+</body>
+</html>

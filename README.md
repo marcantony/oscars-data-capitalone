@@ -1,7 +1,26 @@
 # oscars-data-capitalone
 Code that analyzes data from the 2015 Oscars.
 
-Place oscar_tweets.csv in the "resources" folder.
+Place oscar_tweets.csv in the `resources` folder.
+
+## Setup
+To run this project, you must have the following installations:
+
+1. Python 2.7.5 or compatible version.
+2. [Node.js](http://nodejs.org).
+3. Bower (`npm install -g bower`)
+
+## Usage
+To analyze the csv file, cd into the `src` folder and run the `python analyze.py` command.
+
+To view the web app, run the following commands:
+
+1. `npm install`
+2. `bower install`
+3. `npm start`
+
+Then go to `http://localhost:8080` in a browser.
+You must have first run analyze.py for the web app to work correctly.
 
 ## Prompt
 Using the dataset found here (https://s3.amazonaws.com/mindsumo/public/oscar_tweets.csv+(1).zip) and the programming language of your choice, submit the following:

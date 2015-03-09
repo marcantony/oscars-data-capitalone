@@ -1,2 +1,5 @@
 /resources/oscar_tweets.csv
-/out
+/node_modules
+/www/lib
+/www/data
+npm-debug.log

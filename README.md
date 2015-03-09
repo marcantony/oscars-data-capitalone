@@ -3,6 +3,15 @@ Code that analyzes data from the 2015 Oscars.
 
 Place oscar_tweets.csv in the "resources" folder.
 
+## Usage
+This project was built with Python 2.7.5.
+To run the web app, you must have [Node.js](http://nodejs.org) installed on your computer.
+
+To analyze the csv file, cd into the "src" folder and run the "python analyze.py" command.
+
+To view the web app, run "npm install", followed by "npm start", then go to "http://localhost:8080" in a browser.
+You must have first run analyze.py for the web app to work correctly.
+
 ## Prompt
 Using the dataset found here (https://s3.amazonaws.com/mindsumo/public/oscar_tweets.csv+(1).zip) and the programming language of your choice, submit the following:
 

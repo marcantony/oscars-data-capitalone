@@ -1,0 +1,17 @@
+{
+  "name": "oscars-data-capitalone",
+  "version": "0.0.1",
+  "description": "Data visualization for CapitalOne Oscars 2015 analysis",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcantony/oscars-data-capitalone.git"
+  },
+  "author": "Joshua Zeid",
+  "homepage": "https://github.com/marcantony/oscars-data-capitalone",
+  "scripts": {
+    "start": "node node_modules/http-server/bin/http-server"
+  },
+  "devDependencies": {
+    "http-server": "^0.7.5"
+  }
+}

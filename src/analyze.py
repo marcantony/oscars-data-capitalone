@@ -8,7 +8,7 @@ def openResource(s):
     return open('../resources/' + s)
 
 def openOutput(s):
-    return open('../out/' + s, 'w')
+    return open('../www/data/' + s, 'w+')
 
 bestPicture = 'Birdman'
 

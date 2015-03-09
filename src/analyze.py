@@ -18,7 +18,7 @@ headers = json.load(openResource('headers.json'))
 states = json.load(openResource('states.json'))
 
 popularityFile = openOutput('pop.json')
-timeFile = openOutput('time.txt')
+timeFile = openOutput('time.json')
 stateFile = openOutput('states.json')
 
 nomineeCount = defaultdict(int)
@@ -74,7 +74,7 @@ for idx, state in enumerate(stateRank):
 # print output to files for web app
 try:
     json.dump(popularityRank, popularityFile)
-    timeFile.write(birdmanAnnounceTime.isoformat(' '))
+    json.dump({"time": birdmanAnnounceTime.isoformat(' ')}, timeFile)
     json.dump(stateCount, stateFile)
 finally:
     popularityFile.close()

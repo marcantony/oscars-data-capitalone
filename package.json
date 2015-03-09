@@ -9,7 +9,7 @@
   "author": "Joshua Zeid",
   "homepage": "https://github.com/marcantony/oscars-data-capitalone",
   "scripts": {
-    "start": "node node_modules/http-server/bin/http-server"
+    "start": "node node_modules/http-server/bin/http-server www"
   },
   "devDependencies": {
     "http-server": "^0.7.5"

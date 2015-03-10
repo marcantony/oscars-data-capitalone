@@ -83,7 +83,12 @@ angular.module('oscars', [])
     })
     .directive('oscarsBirdmanTime', function () {
         return {
-            templateUrl: '/templates/oscars-birdman-time.tmplt.html'
+            templateUrl: '/templates/oscars-birdman-time.tmplt.html',
+            controller: function ($scope, DataFactory) {
+                DataFactory.getBirdmanTime().success(function (data) {
+                    $scope.time = data.time
+                });
+            }
         }
     })
 ;

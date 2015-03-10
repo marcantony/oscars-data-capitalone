@@ -74,7 +74,7 @@ for idx, state in enumerate(stateRank):
 # print output to files for web app
 try:
     json.dump(popularityRank, popularityFile)
-    json.dump({"time": birdmanAnnounceTime.isoformat(' ')}, timeFile)
+    json.dump({"time": birdmanAnnounceTime.isoformat()}, timeFile)
     json.dump(stateCount, stateFile)
 finally:
     popularityFile.close()

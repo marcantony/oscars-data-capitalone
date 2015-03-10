@@ -5,3 +5,8 @@ body {
 .oscars-pie {
     height: 400px;
 }
+
+.birdman-time {
+    font-family: Impact;
+    font-size: 300%;
+}

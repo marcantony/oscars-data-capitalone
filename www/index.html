@@ -3,32 +3,39 @@
 <head>
     <title>CapitalOne Oscars 2015 Data Analysis</title>
     <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"></link>
-    <link href="/lib/nvd3/build/nv.d3.min.css" rel="stylesheet"></link>
+    <link href="index.css" rel="stylesheet"></link>
 </head>
 <body>
     <div class="container">
         <div class="page-header">
             <h1>CapitalOne Data Analysis <small>Oscars 2015 Tweet Data</small></h1>
         </div>
-        <div class="row graphs">
+        <div class="row">
             <div class="col-md-6 nominee-list">
-                <h3>Best Picture Nominees Ranked by Mention</h3>
+                <h3 class="text-center">Best Picture Nominees Ranked by Mention</h3>
                 <div oscars-pop-list></div>
             </div>
             <div class="col-md-6 state-pie">
+                <h3 class="text-center">Tweet Activity by State</h3>
                 <div oscars-states-pie></div>
             </div>
+            
         </div>
-        <div class="row winning-time">
-            <div class="col-md-12 birdman-time">
+        <div class="row">
+            <div class="col-md-6 birdman-time">
                 <div oscars-birdman-time></div>
             </div>
         </div>
     </div>
 
+    <script src="/lib/Flot/jquery.js"></script>
     <script src="/lib/angular/angular.js"></script>
-    <script src="/lib/d3/d3.js"></script>
-    <script src="/lib/nvd3/build/nv.d3.js"></script>
+    
+    <script src="/lib/Flot/jquery.flot.js"></script>
+    <script src="/lib/Flot/jquery.flot.pie.js"></script>
+    <script src="/lib/Flot/jquery.flot.resize.js"></script>
+    <script src="/lib/flot.tooltip/js/jquery.flot.tooltip.js"></script>
+
     <script src="oscars.js"></script>
 </body>
 </html>

@@ -25,7 +25,60 @@ angular.module('oscars', [])
     })
     .directive('oscarsStatesPie', function () {
         return {
-            templateUrl: '/templates/oscars-states-pie.tmplt.html'
+            template: '<div class="oscars-pie"></div>',
+            replace: true,
+            controller: function ($scope, DataFactory) {
+                $scope.states = [];
+                DataFactory.getStateFrequency().success(function (data) {
+                    var temp = [];
+                    for(var state in data) {
+                        if(data.hasOwnProperty(state)) {
+                            temp.push({
+                                label: state,
+                                data: data[state]
+                            });
+                        }
+                    }
+                    $scope.states = temp.slice(0);
+                });
+            },
+            require: 'oscarsStatesPie',
+            link: function (scope, el) {
+                scope.$watch('states', function (n) {
+                    if(n.length !== 0) {
+                        createGraph(n);
+                    }
+                });
+
+                function createGraph(data) {
+                    $.plot(el[0], data, {
+                        series: {
+                            pie: {
+                                show: true,
+                                innerRadius: 0.5,
+                                combine: {
+                                    //threshold: 0.01
+                                },
+                                label: {
+                                    threshold: 0.025
+                                }
+                            }
+                        },
+                        legend: {
+                            show: false
+                        },
+                        grid: {
+                            hoverable: true
+                        },
+                        tooltip: true,
+                        tooltipOpts: {
+                            content: function (label, xval, yval) {
+                                return label + ' | ' + yval + ' tweets'
+                            }
+                        }
+                    });
+                }
+            }
         }
     })
     .directive('oscarsBirdmanTime', function () {

@@ -13,7 +13,7 @@ To run this project, you must have the following installations:
 ## Usage
 To analyze the csv file, cd into the `src` folder and run the `python analyze.py` command.
 
-To view the web app, run the following commands:
+To view the web app, run the following commands in the project root:
 
 1. `npm install`
 2. `bower install`

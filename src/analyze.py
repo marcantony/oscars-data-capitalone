@@ -1,5 +1,6 @@
 import csv
 import json
+import os
 
 from datetime import datetime, timedelta
 from collections import defaultdict
@@ -8,7 +9,10 @@ def openResource(s):
     return open('../resources/' + s)
 
 def openOutput(s):
-    return open('../www/data/' + s, 'w+')
+    path = '../www/data/' + s
+    if not os.path.exists(os.path.dirname(path)):
+        os.makedirs(os.path.dirname(path))
+    return open(path, 'w+')
 
 bestPicture = 'Birdman'
 
